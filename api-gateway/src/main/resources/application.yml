@@ -1,0 +1,29 @@
+server:
+  port: 8765
+spring:
+  application:
+    name: api-gateway # id приложения - желательно указывать всегда в микросервисных приложениях
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true # для корректной работы API Gateway
+          lower-case-service-id: true # позволяет не соблюдать регистр букв при указании id сервиса
+      routes[0]: # /user-service/users/user-test -> /users/user-test
+        id: users # id маршрута
+        uri: lb://user-service # lb - loadBalancer, указываем id микросервиса
+        predicates[0]: Path=/users # адрес, по которому вызывается метод микросервиса
+        predicates[1]: Method=GET # тип запроса, который обрабатывает метод микросервиса
+#      routes[1]: # /catalog-management-service/catalog -> /catalog
+#        id: catalog
+#        uri: lb://catalog-management-service
+#        predicates[0]: Path=/catalog
+#        predicates[1]: Method=GET
+#        predicates[2]: Method=POST
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka # url, куда будет происходить регистрация микросервисов
+logging:
+  pattern:
+    console: "%C{1.} [%-5level] %d{HH:mm:ss} - %msg%n" # формат логов

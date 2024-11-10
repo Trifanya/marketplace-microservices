@@ -1,0 +1,30 @@
+server:
+  port: 0 # указывается 0, чтобы при регистрации сервиса в eureka-server порт был определен автоматически
+spring:
+  application:
+    name: feedback-service # id приложения - желательно указывать всегда в микросервисных приложениях
+  kafka:
+    bootstrap-servers: localhost:9092
+    topic:
+      product-rating: product-rating-topic
+  datasource:
+    url: jdbc:postgresql://localhost:5432/marketplace-feedback-db
+    username: postgres
+    password: My_passw0rd
+  flyway:
+    enabled: true # по умолчанию
+    locations: classpath:db/migration # по умолчанию
+    baseline-on-migrate: true
+  jpa:
+    show-sql: true
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka # url, куда будет происходить регистрация микросервисов
+  instance:
+    instance-id: ${spring.application.name}:${random.uuid} # чтобы каждый экземпляр микросервиса имел уникальный id
+    # prefer-ip-address: true
+logging:
+  pattern:
+    console: "%C{1.} [%-5level] %d{HH:mm:ss} - %msg%n" # формат логов
+

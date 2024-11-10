@@ -1,0 +1,21 @@
+server:
+  port: 8761
+spring:
+  application:
+    name: marketplace-eureka-server # id приложения - желательно указывать всегда в микросервисных приложениях
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: false # т.к. это не клиент, то убираем лишние настройки
+    fetch-registry: false # т.к. это не клиент, то убираем лишние настройки
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka # url, куда будет происходить регистрация микросервисов
+logging:
+  level:
+    com:
+      netflix:
+        eureka: OFF # отключение лишних логов, т.к. в данном модуле
+        discovery: OFF # не происходит создание и вызов микросервисов
+  pattern:
+    console: "%C{1.} [%-5level] %d{HH:mm:ss} - %msg%n" # формат логов
