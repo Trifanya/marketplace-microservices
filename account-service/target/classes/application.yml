@@ -2,7 +2,7 @@ server:
   port: 0 # указывается 0, чтобы при регистрации сервиса eureka-server порт был определен автоматически
   #port: 8080
 spring:
-  app:
+  application:
     name: account-service # id приложения - желательно указывать всегда в микросервисных приложениях
     kafka:
       topic:
@@ -46,5 +46,10 @@ logging:
     console: "%C{1.} [%-5level] %d{HH:mm:ss} - %msg%n" # формат логов
   level:
     sql: info
+    org.springframework.kafka.*: OFF
+    org.springframework.kafka.listener.[KafkaMessageListenerContainer$ListenerConsumer]: OFF
+    org.apache.kafka.*: OFF
+    kafka.*: OFF
+    org.apache.zookeeper.*: OFF
 
 

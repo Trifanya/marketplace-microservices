@@ -7,25 +7,42 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="catalog-service" />
-        <module name="api-gateway" />
-        <module name="user-service" />
-        <module name="order-service" />
-        <module name="account-service" />
-        <module name="feedback-service" />
+        <module name="impl (1) (dev.trifonov.marketplace.account-service)" />
+        <module name="api (4) (dev.trifonov.order-service)" />
+        <module name="impl (2) (dev.trifonov.marketplace.catalog-service)" />
+        <module name="impl (3) (dev.trifonov.marketplace.feedback-service)" />
+        <module name="api (3) (dev.trifonov.marketplace.feedback-service)" />
         <module name="eureka-server" />
+        <module name="impl" />
+        <module name="api (2) (dev.trifonov.marketplace.catalog-service)" />
+        <module name="api (5) (dev.trifonov.marketplace)" />
+        <module name="impl (5) (dev.trifonov.marketplace)" />
+        <module name="api-gateway" />
+        <module name="impl (4) (dev.trifonov.order-service)" />
+        <module name="api" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="account-service" options="-parameters" />
+      <module name="account-service" options="" />
+      <module name="api" options="-parameters" />
+      <module name="api (2) (dev.trifonov.marketplace.catalog-service)" options="-parameters" />
+      <module name="api (3) (dev.trifonov.marketplace.feedback-service)" options="-parameters" />
+      <module name="api (4) (dev.trifonov.order-service)" options="-parameters" />
+      <module name="api (5) (dev.trifonov.marketplace)" options="-parameters" />
       <module name="api-gateway" options="-parameters" />
-      <module name="catalog-service" options="-parameters" />
+      <module name="catalog-service" options="" />
       <module name="eureka-server" options="-parameters" />
-      <module name="feedback-service" options="-parameters" />
-      <module name="order-service" options="-parameters" />
-      <module name="user-service" options="-parameters" />
+      <module name="feedback-service" options="" />
+      <module name="impl" options="-parameters" />
+      <module name="impl (1) (dev.trifonov.marketplace.account-service)" options="-parameters" />
+      <module name="impl (2) (dev.trifonov.marketplace.catalog-service)" options="-parameters" />
+      <module name="impl (3) (dev.trifonov.marketplace.feedback-service)" options="-parameters" />
+      <module name="impl (4) (dev.trifonov.order-service)" options="-parameters" />
+      <module name="impl (5) (dev.trifonov.marketplace)" options="-parameters" />
+      <module name="order-service" options="" />
+      <module name="user-service" options="" />
     </option>
   </component>
 </project>

@@ -1,0 +1,55 @@
+server:
+  port: 0 # указывается 0, чтобы при регистрации сервиса eureka-server порт был определен автоматически
+  #port: 8081
+feign-client:
+  uri:
+    account-service: http://localhost:8765/account-service/account
+spring:
+  application:
+    name: catalog-service # id приложения - желательно указывать всегда в микросервисных приложениях
+    gateway-host: http://localhost:8765
+    add-to-cart-url: /account-service/account/{userId}/cart/{productId}
+  kafka:
+    bootstrap-servers: localhost:9092
+    topic:
+      product-rating: product-rating-topic
+      favorites: new-favorite-topic
+  datasource:
+    url: jdbc:postgresql://localhost:5432/marketplace-catalog-db
+    username: postgres
+    password: My_passw0rd
+  flyway:
+    enabled: true # по умолчанию
+    locations: classpath:db/migration # по умолчанию
+    baseline-on-migrate: true
+  jpa:
+    open-in-view: false # если будет true, то после выхода из контроллера возможно открытие сессии hibernate
+    properties:
+      hibernate:
+        show_sql: true
+#  security:
+#    user:
+#      name: user
+#      password: password
+#      roles:
+#        - SERVICE
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka # url, куда будет происходить регистрация микросервисов
+  instance:
+    instance-id: ${spring.application.name}:${random.uuid} # чтобы каждый экземпляр микросервиса имел уникальный id
+    #instance-id: localhost:8081
+    # prefer-ip-address: true
+logging:
+  pattern:
+    #console: "%C{1.} [%-5level] %d{HH:mm:ss} - %msg%n" # формат логов
+  level:
+    sql: info
+    org.springframework.kafka.*: OFF
+    org.springframework.kafka.listener.[KafkaMessageListenerContainer$ListenerConsumer]: OFF
+    org.apache.kafka.*: OFF
+    kafka.*: OFF
+    org.apache.zookeeper.*: OFF
+
+
