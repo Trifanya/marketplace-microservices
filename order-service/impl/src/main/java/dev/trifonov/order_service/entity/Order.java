@@ -1,6 +1,6 @@
 package dev.trifonov.order_service.entity;
 
-import jakarta.annotation.Nullable;
+import dev.trifonov.order_service.dto.OrderStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,9 +25,16 @@ public class Order {
     @Column(name = "price")
     private Integer price;
 
-    @Column(name = "date_time")
-    private LocalDateTime dateTime;
+    @Column(name = "order_date_time")
+    private LocalDateTime orderDateTime;
 
-    @OneToMany(mappedBy = "order")
+    @Column(name = "delivery_date_time")
+    private LocalDateTime deliveryDateTime;
+
+    @Column(name = "status")
+    @Enumerated(value = EnumType.STRING)
+    private OrderStatus status;
+
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderProduct> products;
 }

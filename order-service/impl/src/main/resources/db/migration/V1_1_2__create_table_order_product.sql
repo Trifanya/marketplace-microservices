@@ -7,5 +7,7 @@ CREATE TABLE order_product (
                    CHECK (product_id > 0),
     amount INT NOT NULL
                CHECK (amount > 0),
+    price INT NOT NULL
+              CHECK (price > 0),
     CONSTRAINT uk_order_product UNIQUE (order_id, product_id)
 );

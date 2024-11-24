@@ -1,5 +1,8 @@
 server:
   port: 0 # указывается 0, чтобы при регистрации сервиса в eureka-server порт был определен автоматически
+feign-client:
+  uri:
+    catalog-service: http://localhost:8765/catalog-service/catalog
 spring:
   application:
     name: order-service # id приложения - желательно указывать всегда в микросервисных приложениях

@@ -4,8 +4,8 @@ import dev.trifonov.catalog_service.dto.CharacteristicDto;
 import dev.trifonov.catalog_service.entity.Product;
 import dev.trifonov.catalog_service.entity.Characteristic;
 import dev.trifonov.catalog_service.entity.ProductImage;
-import dev.trifonov.catalog_service.get_only_dto.ProductDetailsDto;
-import dev.trifonov.catalog_service.send_only_dto.ProductPreviewDto;
+import dev.trifonov.catalog_service.dto.get_only_dto.ProductDetailsDto;
+import dev.trifonov.catalog_service.dto.send_only_dto.ProductPreviewDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
@@ -21,7 +21,7 @@ public class ProductMapper implements AbstractMapper<Product, ProductDetailsDto,
     @Override
     public ProductPreviewDto convertToDto(Product product) {
         ProductPreviewDto dto = modelMapper.map(product, ProductPreviewDto.class);
-        dto.setCoverImageUrl(
+        dto.setProductCoverUrl(
                 product.getProductImages().stream()
                         .map(ProductImage::getUrl)
                         .findFirst().orElse("defaultUrl"));

@@ -1,13 +1,12 @@
 package dev.trifonov.user_service.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import lombok.experimental.Accessors;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter
+@Setter
+@Accessors(chain = true)
 @Entity
 @Table(name = "m_authority")
 public class Authority {

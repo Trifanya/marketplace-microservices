@@ -10,13 +10,27 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>dev.trifonov.order-service</groupId>
+    <groupId>dev.trifonov.marketplace.order-service</groupId>
     <artifactId>impl</artifactId>
 
     <properties>
         <maven.compiler.source>19</maven.compiler.source>
         <maven.compiler.target>19</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <catalog-service.version>0.0.1-SNAPSHOT</catalog-service.version>
+        <account-service.version>0.0.1-SNAPSHOT</account-service.version>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>dev.trifonov.marketplace.account-service</groupId>
+            <artifactId>api</artifactId>
+            <version>${account-service.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>dev.trifonov.marketplace.catalog-service</groupId>
+            <artifactId>api</artifactId>
+            <version>${catalog-service.version}</version>
+        </dependency>
+    </dependencies>
 </project>

@@ -3,11 +3,13 @@ package dev.trifonov.order_service.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.Accessors;
 
 
 @Getter
 @Setter
 @Entity
+@Accessors(chain = true)
 @Table(name = "order_product")
 public class OrderProduct {
     @Id
@@ -18,9 +20,12 @@ public class OrderProduct {
     private Long productId;
 
     @Column(name = "amount")
-    private Integer amount;
+    private Integer amountInOrder;
 
-    @ManyToOne
+    @Column(name = "price")
+    private Integer price;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "order_id", referencedColumnName = "id")
     private Order order;
 }

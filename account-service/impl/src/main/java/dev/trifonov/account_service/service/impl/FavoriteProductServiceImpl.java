@@ -1,6 +1,6 @@
 package dev.trifonov.account_service.service.impl;
 
-import dev.trifonov.account_service.entity.UserFavoriteProduct;
+import dev.trifonov.account_service.entity.FavoriteProduct;
 import dev.trifonov.account_service.repository.FavoriteProductRepository;
 import dev.trifonov.account_service.service.api.FavoriteProductService;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +17,7 @@ public class FavoriteProductServiceImpl implements FavoriteProductService {
     private final FavoriteProductRepository favoriteProductRepository;
 
     @Override
-    public List<UserFavoriteProduct> getFavoriteProducts(long userId) {
+    public List<FavoriteProduct> getFavoriteProducts(long userId) {
         log.trace("");
         return favoriteProductRepository.findAllByUserId(userId);
     }
@@ -25,10 +25,10 @@ public class FavoriteProductServiceImpl implements FavoriteProductService {
     @Override
     public void addNewFavoriteProduct(long userId, long productId) {
         log.trace("");
-        UserFavoriteProduct newUserFavoriteProduct = new UserFavoriteProduct()
+        FavoriteProduct newFavoriteProduct = new FavoriteProduct()
                 .setUserId(userId)
                 .setProductId(productId);
-        favoriteProductRepository.save(newUserFavoriteProduct);
+        favoriteProductRepository.save(newFavoriteProduct);
     }
 
     @Override

@@ -5,7 +5,7 @@ import dev.trifonov.catalog_service.entity.Product;
 import dev.trifonov.catalog_service.exception.ProductNotFoundException;
 import dev.trifonov.catalog_service.mapper.ProductMapper;
 import dev.trifonov.catalog_service.repository.ProductRepository;
-import dev.trifonov.catalog_service.send_only_dto.ProductPreviewDto;
+import dev.trifonov.catalog_service.dto.send_only_dto.ProductPreviewDto;
 import dev.trifonov.catalog_service.service.api.ProductService;
 import dev.trifonov.catalog_service.service.specification.ProductSpecificationConstructor;
 import lombok.RequiredArgsConstructor;
@@ -39,7 +39,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     @Transactional
-    public List<ProductPreviewDto> getProducts(Set<Long> productIds) {
+    public List<ProductPreviewDto> getProducts(List<Long> productIds) {
         return Lists.newArrayList(productRepository.findAllById(new HashSet<>(productIds))).stream()
                 .map(productMapper::convertToDto)
                 .toList();
