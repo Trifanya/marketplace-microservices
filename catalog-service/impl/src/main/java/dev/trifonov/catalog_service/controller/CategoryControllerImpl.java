@@ -1,6 +1,6 @@
 package dev.trifonov.catalog_service.controller;
 
-import dev.trifonov.catalog_service.dto.send_only_dto.CategoryPreviewDto;
+import dev.trifonov.catalog_service.dto.CategoryPreviewDto;
 import dev.trifonov.catalog_service.service.api.CategoryService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -1,6 +1,6 @@
 package dev.trifonov.order_service.service.impl;
 
-import dev.trifonov.catalog_service.dto.send_only_dto.ProductPreviewDto;
+import dev.trifonov.catalog_service.dto.ProductPreviewDto;
 import dev.trifonov.order_service.dto.OrderDetailsDto;
 import dev.trifonov.order_service.dto.OrderPreviewDto;
 import dev.trifonov.order_service.dto.OrderProductDto;

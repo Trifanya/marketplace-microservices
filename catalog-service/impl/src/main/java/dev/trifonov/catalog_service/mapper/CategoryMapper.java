@@ -1,8 +1,8 @@
 package dev.trifonov.catalog_service.mapper;
 
 import dev.trifonov.catalog_service.entity.Category;
-import dev.trifonov.catalog_service.dto.get_only_dto.CategoryDetailsDto;
-import dev.trifonov.catalog_service.dto.send_only_dto.CategoryPreviewDto;
+import dev.trifonov.catalog_service.dto.CategoryDetailsDto;
+import dev.trifonov.catalog_service.dto.CategoryPreviewDto;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;

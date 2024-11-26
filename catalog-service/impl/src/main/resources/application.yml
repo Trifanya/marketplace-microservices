@@ -16,6 +16,7 @@ spring:
       favorites: new-favorite-topic
   datasource:
     url: jdbc:postgresql://localhost:5432/marketplace-catalog-db
+    #url: jdbc:postgresql://localhost:5433/marketplace-catalog-db
     username: postgres
     password: My_passw0rd
   flyway:

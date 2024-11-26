@@ -7,7 +7,7 @@ import dev.trifonov.account_service.feign.OrderFeignClient;
 import dev.trifonov.account_service.mapper.CartProductMapper;
 import dev.trifonov.account_service.repository.CartProductRepository;
 import dev.trifonov.account_service.service.api.CartProductService;
-import dev.trifonov.catalog_service.dto.send_only_dto.ProductPreviewDto;
+import dev.trifonov.catalog_service.dto.ProductPreviewDto;
 import dev.trifonov.order_service.dto.OrderProductDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

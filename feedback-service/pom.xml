@@ -30,9 +30,15 @@
 		<flyway.version>10.20.1</flyway.version>
 		<postgresql.version>42.7.4</postgresql.version>
 		<java.version>17</java.version>
+		<loki-logback-appender.version>1.5.1</loki-logback-appender.version>
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>com.github.loki4j</groupId>
+			<artifactId>loki-logback-appender</artifactId>
+			<version>${loki-logback-appender.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>dev.trifonov.marketplace.feedback-service</groupId>
 			<artifactId>api</artifactId>

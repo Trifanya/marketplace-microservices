@@ -1,6 +1,6 @@
 package dev.trifonov.order_service.mapper;
 
-import dev.trifonov.catalog_service.dto.send_only_dto.ProductPreviewDto;
+import dev.trifonov.catalog_service.dto.ProductPreviewDto;
 import dev.trifonov.order_service.dto.OrderProductDto;
 import dev.trifonov.order_service.entity.OrderProduct;
 import lombok.RequiredArgsConstructor;

@@ -1,6 +1,6 @@
 package dev.trifonov.account_service.controller;
 
-import dev.trifonov.catalog_service.dto.send_only_dto.ProductPreviewDto;
+import dev.trifonov.catalog_service.dto.ProductPreviewDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

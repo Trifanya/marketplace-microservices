@@ -1,6 +1,6 @@
 package dev.trifonov.catalog_service.controller;
 
-import dev.trifonov.catalog_service.dto.send_only_dto.CategoryPreviewDto;
+import dev.trifonov.catalog_service.dto.CategoryPreviewDto;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 

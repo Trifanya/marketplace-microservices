@@ -2,14 +2,12 @@ package dev.trifonov.account_service.controller;
 
 import dev.trifonov.account_service.dto.ProductInCartDto;
 import dev.trifonov.account_service.service.api.CartProductService;
-import dev.trifonov.catalog_service.dto.send_only_dto.ProductPreviewDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 @Slf4j
 @RestController

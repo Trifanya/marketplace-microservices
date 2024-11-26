@@ -2,21 +2,17 @@ package dev.trifonov.catalog_service.controller;
 
 import dev.trifonov.catalog_service.feign.CartFeignClient;
 import dev.trifonov.catalog_service.kafka.producer.NewFavoriteProductKafkaSender;
-import dev.trifonov.catalog_service.dto.send_only_dto.AddToFavoritesDto;
-import dev.trifonov.catalog_service.dto.send_only_dto.CategoryPreviewDto;
-import dev.trifonov.catalog_service.dto.send_only_dto.ProductPreviewDto;
-import dev.trifonov.catalog_service.service.api.CategoryService;
+import dev.trifonov.catalog_service.dto.AddToFavoritesDto;
+import dev.trifonov.catalog_service.dto.ProductPreviewDto;
 import dev.trifonov.catalog_service.service.api.ProductService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 @Slf4j
 @RestController

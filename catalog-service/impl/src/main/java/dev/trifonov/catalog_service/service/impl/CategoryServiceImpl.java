@@ -1,10 +1,10 @@
 package dev.trifonov.catalog_service.service.impl;
 
 import dev.trifonov.catalog_service.entity.Category;
-import dev.trifonov.catalog_service.dto.get_only_dto.CategoryDetailsDto;
+import dev.trifonov.catalog_service.dto.CategoryDetailsDto;
 import dev.trifonov.catalog_service.mapper.AbstractMapper;
 import dev.trifonov.catalog_service.repository.CategoryRepository;
-import dev.trifonov.catalog_service.dto.send_only_dto.CategoryPreviewDto;
+import dev.trifonov.catalog_service.dto.CategoryPreviewDto;
 import dev.trifonov.catalog_service.service.api.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

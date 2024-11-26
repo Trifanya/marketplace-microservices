@@ -5,7 +5,7 @@ import dev.trifonov.catalog_service.entity.Product;
 import dev.trifonov.catalog_service.exception.ProductNotFoundException;
 import dev.trifonov.catalog_service.mapper.ProductMapper;
 import dev.trifonov.catalog_service.repository.ProductRepository;
-import dev.trifonov.catalog_service.dto.send_only_dto.ProductPreviewDto;
+import dev.trifonov.catalog_service.dto.ProductPreviewDto;
 import dev.trifonov.catalog_service.service.api.ProductService;
 import dev.trifonov.catalog_service.service.specification.ProductSpecificationConstructor;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +18,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 @Slf4j
 @Service

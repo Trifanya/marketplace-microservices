@@ -28,15 +28,15 @@
         <flyway.version>10.20.1</flyway.version>
         <postgresql.version>42.7.4</postgresql.version>
         <modelmapper.version>3.2.1</modelmapper.version>
-        <!--<guava.version>33.3.0-jre</guava.version>-->
+        <loki-logback-appender.version>1.5.1</loki-logback-appender.version>
     </properties>
 
 	<dependencies>
-        <!--<dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
-        </dependency>-->
+        <dependency>
+            <groupId>com.github.loki4j</groupId>
+            <artifactId>loki-logback-appender</artifactId>
+            <version>${loki-logback-appender.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.modelmapper</groupId>
             <artifactId>modelmapper</artifactId>

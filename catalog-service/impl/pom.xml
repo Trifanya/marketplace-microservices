@@ -12,11 +12,21 @@
     <groupId>dev.trifonov.marketplace.catalog-service</groupId>
     <artifactId>impl</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
     <properties>
         <maven.compiler.source>19</maven.compiler.source>
         <maven.compiler.target>19</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <catalog-service.version>0.0.1-SNAPSHOT</catalog-service.version>
     </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>dev.trifonov.marketplace.catalog-service</groupId>
+            <artifactId>api</artifactId>
+            <version>${catalog-service.version}</version>
+        </dependency>
+    </dependencies>
 
 </project>

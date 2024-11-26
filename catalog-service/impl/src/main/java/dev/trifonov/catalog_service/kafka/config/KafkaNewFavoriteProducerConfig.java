@@ -1,6 +1,6 @@
 package dev.trifonov.catalog_service.kafka.config;
 
-import dev.trifonov.catalog_service.dto.send_only_dto.AddToFavoritesDto;
+import dev.trifonov.catalog_service.dto.AddToFavoritesDto;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Value;

@@ -3,7 +3,7 @@ package dev.trifonov.account_service.controller;
 import dev.trifonov.account_service.entity.FavoriteProduct;
 import dev.trifonov.account_service.feign.CatalogFeignClient;
 import dev.trifonov.account_service.service.api.FavoriteProductService;
-import dev.trifonov.catalog_service.dto.send_only_dto.ProductPreviewDto;
+import dev.trifonov.catalog_service.dto.ProductPreviewDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;

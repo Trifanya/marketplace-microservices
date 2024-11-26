@@ -1,0 +1,41 @@
+version: '3'
+services:
+
+  postgres:
+    container_name: mpc-catalog-db-postgres
+    image: postgres:16rc1-alpine
+    environment:
+      #POSTGRES_DB: marketplace-catalog-db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - 5432:5432
+
+  zookeeper:
+    container_name: mpc-zookeeper
+    image: zookeeper
+    ports:
+      - 2181:2181
+
+  kafka:
+    container_name: mpc-kafka
+    image: apache/kafka
+    ports:
+      - 9092:9092
+    depends_on:
+    - zookeeper
+
+  application:
+    container_name: mpc-catalog-service
+    build:
+      context: impl
+      dockerfile: Dockerfile
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+    ports:
+      - 8080:8080
+    depends_on:
+      - postgres
+      - kafka

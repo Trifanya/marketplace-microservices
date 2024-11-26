@@ -11,6 +11,8 @@
 
     <groupId>dev.trifonov.marketplace.catalog-service</groupId>
     <artifactId>api</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
     <properties>
         <maven.compiler.source>19</maven.compiler.source>

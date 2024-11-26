@@ -1,6 +1,6 @@
 package dev.trifonov.catalog_service.kafka.producer;
 
-import dev.trifonov.catalog_service.dto.send_only_dto.AddToFavoritesDto;
+import dev.trifonov.catalog_service.dto.AddToFavoritesDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
