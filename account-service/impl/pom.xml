@@ -17,9 +17,38 @@
         <maven.compiler.source>19</maven.compiler.source>
         <maven.compiler.target>19</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <order-service.version>0.0.1-SNAPSHOT</order-service.version>
+        <catalog-service.version>0.0.1-SNAPSHOT</catalog-service.version>
+        <feedback-service.version>0.0.1-SNAPSHOT</feedback-service.version>
+        <user-service.version>0.0.1-SNAPSHOT</user-service.version>
+        <account-service.version>0.0.1-SNAPSHOT</account-service.version>
     </properties>
 
     <dependencies>
-
+        <dependency>
+            <groupId>dev.trifonov.marketplace.account-service</groupId>
+            <artifactId>api</artifactId>
+            <version>${account-service.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>dev.trifonov.marketplace.order-service</groupId>
+            <artifactId>api</artifactId>
+            <version>${order-service.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>dev.trifonov.marketplace.catalog-service</groupId>
+            <artifactId>api</artifactId>
+            <version>${catalog-service.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>dev.trifonov.marketplace.feedback-service</groupId>
+            <artifactId>api</artifactId>
+            <version>${feedback-service.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>dev.trifonov.marketplace.user-service</groupId>
+            <artifactId>api</artifactId>
+            <version>${user-service.version}</version>
+        </dependency>
     </dependencies>
 </project>

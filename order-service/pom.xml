@@ -107,6 +107,14 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<goals>
+					<goal>repackage</goal>
+				</goals>
+				<configuration>
+					<classifier>exec</classifier>
+					<mainClass>dev.trifonov.order_service.OrderServiceApplication</mainClass>
+					<layout>JAR</layout>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

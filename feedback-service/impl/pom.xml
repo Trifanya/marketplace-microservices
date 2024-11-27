@@ -16,6 +16,14 @@
         <maven.compiler.source>19</maven.compiler.source>
         <maven.compiler.target>19</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <feedback-service.version>0.0.1-SNAPSHOT</feedback-service.version>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>dev.trifonov.marketplace.feedback-service</groupId>
+            <artifactId>api</artifactId>
+            <version>${feedback-service.version}</version>
+        </dependency>
+    </dependencies>
 </project>

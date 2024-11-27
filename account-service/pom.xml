@@ -28,45 +28,15 @@
         <flyway.version>10.20.1</flyway.version>
         <spring-kafka.version>3.2.4</spring-kafka.version>
         <postgresql.version>42.7.4</postgresql.version>
-        <order-service.version>0.0.1-SNAPSHOT</order-service.version>
-        <catalog-service.version>0.0.1-SNAPSHOT</catalog-service.version>
-        <feedback-service.version>0.0.1-SNAPSHOT</feedback-service.version>
-        <user-service.version>0.0.1-SNAPSHOT</user-service.version>
-        <account-service.version>0.0.1-SNAPSHOT</account-service.version>
         <loki-logback-appender.version>1.5.1</loki-logback-appender.version>
     </properties>
 
     <dependencies>
-        <dependency>
+        <!--<dependency>
             <groupId>com.github.loki4j</groupId>
             <artifactId>loki-logback-appender</artifactId>
             <version>${loki-logback-appender.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>dev.trifonov.marketplace.account-service</groupId>
-            <artifactId>api</artifactId>
-            <version>${account-service.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>dev.trifonov.marketplace.order-service</groupId>
-            <artifactId>api</artifactId>
-            <version>${order-service.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>dev.trifonov.marketplace.catalog-service</groupId>
-            <artifactId>api</artifactId>
-            <version>${catalog-service.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>dev.trifonov.marketplace.feedback-service</groupId>
-            <artifactId>api</artifactId>
-            <version>${feedback-service.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>dev.trifonov.marketplace.user-service</groupId>
-            <artifactId>api</artifactId>
-            <version>${user-service.version}</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka</artifactId>
@@ -133,6 +103,14 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <goals>
+                    <goal>repackage</goal>
+                </goals>
+                <configuration>
+                    <classifier>exec</classifier>
+                    <mainClass>dev.trifonov.account_service.AccountServiceApplication</mainClass>
+                    <layout>JAR</layout>
+                </configuration>
             </plugin>
         </plugins>
     </build>

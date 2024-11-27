@@ -1,40 +1,101 @@
-version: "3"
-networks:
-  loki:
+version: '3'
 services:
-  loki:
-    image: grafana/loki:2.9.0
+  zookeeper:
+    container_name: mpc-zookeeper
+    image: zookeeper
     ports:
-      - "3100:3100"
-    command: -config.file=/etc/loki/local-config.yaml
-    networks:
-      - loki
-  grafana:
+      - 22181:2181
+  kafka:
+    container_name: mpc-kafka
+    image: apache/kafka
+    ports:
+      - '29092:9092'
+    depends_on:
+      - zookeeper
+
+  eureka-server:
+    container_name: mpc-eureka-server
+    image: marketplace/eureka-server
+    ports:
+      - 8761:8761
+  api-gateway:
+    container_name: mpc-api-gateway
+    image: marketplace/api-gateway
     environment:
-      - GF_PATHS_PROVISIONING=/etc/grafana/provisioning
-      - GF_AUTH_ANONYMOUS_ENABLED=true
-      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
-    entrypoint:
-      - sh
-      - -euc
-      - |
-        mkdir -p /etc/grafana/provisioning/datasources
-        cat <<EOF > /etc/grafana/provisioning/datasources/ds.yaml
-        apiVersion: 1
-        datasources:
-        - name: Loki
-          type: loki
-          access: proxy
-          orgId: 1
-          url: http://loki:3100
-          basicAuth: false
-          isDefault: true
-          version: 1
-          editable: false
-        EOF
-        /run.sh
-    image: grafana/grafana:latest
+      EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE: http://eureka-server:8761/eureka
+    restart: always
+    depends_on:
+      - eureka-server
     ports:
-      - "3000:3000"
-    networks:
-      - loki
+      - '8765:8765'
+
+  postgres-account:
+    container_name: mpc-account-db-postgres
+    image: postgres:16rc1-alpine
+    environment:
+      POSTGRES_DB: mpc-account-db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+  account-service:
+    container_name: mpc-account-service
+    build:
+      context: account-service/impl
+      dockerfile: Dockerfile
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-account:5432/mpc-account-db
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE: http://eureka-server:8761/eureka
+    depends_on:
+      - postgres-account
+      - kafka
+
+  postgres-catalog:
+    container_name: mpc-catalog-db-postgres
+    image: postgres:16rc1-alpine
+    environment:
+      POSTGRES_DB: mpc-catalog-db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+
+  catalog-service:
+    container_name: mpc-catalog-service
+    build:
+      context: catalog-service/impl
+      dockerfile: Dockerfile
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-catalog:5432/mpc-catalog-db
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE: http://eureka-server:8761/eureka
+    depends_on:
+      - postgres-catalog
+      - kafka
+
+#  order-service:
+#    container_name: mpc-order-service
+#    build:
+#      context: order-service/impl
+#      dockerfile: Dockerfile
+#    environment:
+#      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/postgres
+#      SPRING_DATASOURCE_USERNAME: postgres
+#      SPRING_DATASOURCE_PASSWORD: postgres
+#      EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE: http://eureka-server:8761/eureka
+#    depends_on:
+#      - postgres
+#      - kafka
+#
+#  feedback-service:
+#    container_name: mpc-feedback-service
+#    build:
+#      context: feedback-service/impl
+#      dockerfile: Dockerfile
+#    environment:
+#      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/postgres
+#      SPRING_DATASOURCE_USERNAME: postgres
+#      SPRING_DATASOURCE_PASSWORD: postgres
+#      EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE: http://eureka-server:8761/eureka
+#    depends_on:
+#      - postgres
+#      - kafka

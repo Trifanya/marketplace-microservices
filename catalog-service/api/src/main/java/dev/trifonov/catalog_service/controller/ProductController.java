@@ -15,7 +15,7 @@ public interface ProductController {
     @GetMapping("/products/{productId}")
     ProductPreviewDto getProduct(@PathVariable long productId);
 
-    @GetMapping("/products/{categoryId}")
+    @GetMapping("/products/{categoryId}/page")
     List<ProductPreviewDto> getProductPageByFilters(@PathVariable long categoryId,
                                                     @PageableDefault(size = 15, sort = "id") Pageable pageable,
                                                     @RequestParam Map<String, String> filters);
