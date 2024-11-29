@@ -9,6 +9,6 @@ import java.util.Map;
 public interface ProductService {
     ProductPreviewDto getProduct(long productId);
     List<ProductPreviewDto> getProducts(List<Long> productIds);
-    List<ProductPreviewDto> getProductPage(Pageable pageRequest, Map<String, String> filters);
+    List<ProductPreviewDto> getProductsPage(Pageable pageRequest, Map<String, String> filters);
     void recalculateRating(long productId, float reacalculatedRating);
 }

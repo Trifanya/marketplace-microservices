@@ -39,7 +39,10 @@ public class ProductControllerImpl implements ProductController {
     @Override
     public List<ProductPreviewDto> getProductPageByFilters(long categoryId, Pageable pageable, Map<String, String> filters) {
         log.info("Принят запрос на получение списка товаров. Параметры пэйджинга: {} Фильтры: {}", pageable, filters);
-        return productService.getProductPage(pageable, filters);
+        long start = System.currentTimeMillis();
+        List<ProductPreviewDto> productPreviewDtos = productService.getProductsPage(pageable, filters);
+        System.out.println("time: " + (System.currentTimeMillis() - start));
+        return productPreviewDtos;
     }
 
     @Override

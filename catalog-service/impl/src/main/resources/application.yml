@@ -9,6 +9,9 @@ spring:
     name: catalog-service # id приложения - желательно указывать всегда в микросервисных приложениях
     gateway-host: http://localhost:8765
     add-to-cart-url: /account-service/account/{userId}/cart/{productId}
+  redis:
+    host: localhost
+    port: 6379
   kafka:
     bootstrap-servers: localhost:9092
     topic:
@@ -16,7 +19,6 @@ spring:
       favorites: new-favorite-topic
   datasource:
     url: jdbc:postgresql://localhost:5432/marketplace-catalog-db
-    #url: jdbc:postgresql://localhost:5433/marketplace-catalog-db
     username: postgres
     password: My_passw0rd
   flyway:
@@ -28,19 +30,12 @@ spring:
     properties:
       hibernate:
         show_sql: true
-#  security:
-#    user:
-#      name: user
-#      password: password
-#      roles:
-#        - SERVICE
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka # url, куда будет происходить регистрация микросервисов
   instance:
     instance-id: ${spring.application.name}:${random.uuid} # чтобы каждый экземпляр микросервиса имел уникальный id
-    #instance-id: localhost:8081
     # prefer-ip-address: true
 logging:
   pattern:

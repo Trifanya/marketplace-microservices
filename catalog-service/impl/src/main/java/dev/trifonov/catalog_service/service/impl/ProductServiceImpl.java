@@ -10,6 +10,8 @@ import dev.trifonov.catalog_service.service.api.ProductService;
 import dev.trifonov.catalog_service.service.specification.ProductSpecificationConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
@@ -21,6 +23,7 @@ import java.util.Map;
 
 @Slf4j
 @Service
+@CacheConfig(cacheNames = "products")
 @RequiredArgsConstructor
 public class ProductServiceImpl implements ProductService {
 
@@ -37,6 +40,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @Cacheable(value = "productsByIds")
     @Transactional
     public List<ProductPreviewDto> getProducts(List<Long> productIds) {
         return Lists.newArrayList(productRepository.findAllById(new HashSet<>(productIds))).stream()
@@ -45,8 +49,9 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    @Cacheable(value = "productsPage")
     @Transactional
-    public List<ProductPreviewDto> getProductPage(Pageable pageRequest, Map<String, String> filters) {
+    public List<ProductPreviewDto> getProductsPage(Pageable pageRequest, Map<String, String> filters) {
         Specification<Product> spec = ProductSpecificationConstructor.build(filters);
         return productRepository.findAll(spec, pageRequest)
                 .getContent().stream()
