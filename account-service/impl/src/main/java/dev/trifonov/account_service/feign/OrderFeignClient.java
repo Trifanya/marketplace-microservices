@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
-@FeignClient(value = "order-service", url = "${feign-client.uri.order-service}")
+@FeignClient(value = "order-service"/*, url = "${feign.order-service.uri}"*/)
 public interface OrderFeignClient {
 
     @GetMapping

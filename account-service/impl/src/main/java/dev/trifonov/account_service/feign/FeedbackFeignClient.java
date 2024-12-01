@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.util.List;
 import java.util.Set;
 
-@FeignClient(value = "feedback-service", url = "${feign-client.uri.feedback-service}")
+@FeignClient(value = "feedback-service"/*, url = "${feign.feedback-service.uri}"*/)
 public interface FeedbackFeignClient {
 
     @GetMapping("/reviews")

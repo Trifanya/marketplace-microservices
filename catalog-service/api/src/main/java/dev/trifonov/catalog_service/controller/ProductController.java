@@ -9,25 +9,26 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
-@RequestMapping("/catalog")
+@RequestMapping("/products")
 public interface ProductController {
 
-    @GetMapping("/products/{productId}")
+    @GetMapping("/{productId}")
     ProductPreviewDto getProduct(@PathVariable long productId);
 
-    @GetMapping("/products/{categoryId}/page")
+    @GetMapping("/{categoryId}/page")
     List<ProductPreviewDto> getProductPageByFilters(@PathVariable long categoryId,
                                                     @PageableDefault(size = 15, sort = "id") Pageable pageable,
                                                     @RequestParam Map<String, String> filters);
 
-    @PostMapping("/products")
-    List<ProductPreviewDto> getProductsByIds(@RequestBody List<Long> productIds);
+    @PostMapping
+    List<ProductPreviewDto> getProductsByIds(@RequestHeader Map<String, String> headers,
+                                             @RequestBody List<Long> productIds);
 
-    @PostMapping("/products/addToFavorites/{userId}/{productId}")
+    @PostMapping("/addToFavorites/{userId}/{productId}")
     ResponseEntity<?> addProductToFavorites(@PathVariable("userId") long userId,
                                             @PathVariable("productId") long productId);
 
-    @PostMapping("/products/addToCart/{userId}/{productId}")
+    @PostMapping("/addToCart/{userId}/{productId}")
     ResponseEntity<?> addProductToCart(@PathVariable("userId") long userId,
                                        @PathVariable("productId") long productId);
 }

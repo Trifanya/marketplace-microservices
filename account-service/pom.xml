@@ -23,20 +23,30 @@
 
     <properties>
         <java.version>17</java.version>
+        <spring-boot.version>3.3.5</spring-boot.version>
         <spring-cloud.version>2023.0.3</spring-cloud.version>
         <lombok.version>1.18.34</lombok.version>
         <flyway.version>10.20.1</flyway.version>
         <spring-kafka.version>3.2.4</spring-kafka.version>
         <postgresql.version>42.7.4</postgresql.version>
         <loki-logback-appender.version>1.5.1</loki-logback-appender.version>
+        <feign-normalized-logger.version>0.1.4</feign-normalized-logger.version>
     </properties>
 
     <dependencies>
-        <!--<dependency>
-            <groupId>com.github.loki4j</groupId>
-            <artifactId>loki-logback-appender</artifactId>
-            <version>${loki-logback-appender.version}</version>
-        </dependency>-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-oauth2-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>me.bvn13.openfeign.logger</groupId>
+            <artifactId>feign-normalized-logger</artifactId>
+            <version>${feign-normalized-logger.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka</artifactId>
@@ -88,6 +98,13 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>

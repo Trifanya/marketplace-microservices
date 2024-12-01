@@ -24,10 +24,10 @@ public class FavoriteProductControllerImpl implements FavoriteProductController 
     @Override
     public List<ProductPreviewDto> getFavorites(long userId) {
         log.info("Принят запрос на получение избранного пользователя. userId: {}", userId);
-        Set<Long> productIds =
+        List<Long> productIds =
                 favoriteProductService.getFavoriteProducts(userId).stream()
                         .map(FavoriteProduct::getProductId)
-                        .collect(Collectors.toSet());
+                        .toList();
         return catalogFeignClient.getProductsByIds(productIds);
     }
 

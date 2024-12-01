@@ -1,14 +1,37 @@
 server:
   port: 0 # указывается 0, чтобы при регистрации сервиса eureka-server порт был определен автоматически
   #port: 8081
-feign-client:
-  uri:
-    account-service: http://localhost:8765/account-service/account
+marketplace:
+  feign-client:
+    account-service:
+      uri: http://localhost:8765/account-service
 spring:
   application:
     name: catalog-service # id приложения - желательно указывать всегда в микросервисных приложениях
     gateway-host: http://localhost:8765
     add-to-cart-url: /account-service/account/{userId}/cart/{productId}
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/marketplace # тот, кто выдает jwt
+      client:
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:8080/realms/marketplace
+        registration:
+#          keycloak:
+#            client-id: catalog-service
+#            client-sercret: rYV6GRUFZ1ihZXV7lGUIg0GZWSP2WhEt
+#            scope:
+#              - openid
+          discovery:
+            provider: keycloak
+            client-id: catalog-service
+            client-secret: rYV6GRUFZ1ihZXV7lGUIg0GZWSP2WhEt
+            authorization-grant-type: client_credentials
+            scope:
+              - discovery
   redis:
     host: localhost
     port: 6379
@@ -34,6 +57,7 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka # url, куда будет происходить регистрация микросервисов
+    registry-fetch-interval-seconds: 5
   instance:
     instance-id: ${spring.application.name}:${random.uuid} # чтобы каждый экземпляр микросервиса имел уникальный id
     # prefer-ip-address: true

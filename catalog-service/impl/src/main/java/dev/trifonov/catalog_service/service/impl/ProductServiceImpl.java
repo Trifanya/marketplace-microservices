@@ -40,7 +40,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    @Cacheable(value = "productsByIds")
+    //@Cacheable(value = "productsByIds")
     @Transactional
     public List<ProductPreviewDto> getProducts(List<Long> productIds) {
         return Lists.newArrayList(productRepository.findAllById(new HashSet<>(productIds))).stream()

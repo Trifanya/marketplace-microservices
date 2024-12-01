@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
-@RequestMapping("/catalog")
+@RequestMapping("/categories")
 public interface CategoryController {
 
-    @GetMapping("/categories")
+    @GetMapping
     List<CategoryPreviewDto> getCategories();
 }

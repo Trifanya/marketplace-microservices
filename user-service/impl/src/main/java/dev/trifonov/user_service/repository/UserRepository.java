@@ -1,7 +1,10 @@
 package dev.trifonov.user_service.repository;
 
-import dev.trifonov.user_service.entity.User;
+import dev.trifonov.user_service.entity.MarketplaceUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UserRepository extends JpaRepository<User, Long> {
+import java.util.Optional;
+
+public interface UserRepository extends JpaRepository<MarketplaceUser, Long> {
+    Optional<MarketplaceUser> findByEmail(String email);
 }

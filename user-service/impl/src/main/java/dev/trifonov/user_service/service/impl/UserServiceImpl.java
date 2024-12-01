@@ -2,7 +2,7 @@ package dev.trifonov.user_service.service.impl;
 
 import dev.trifonov.user_service.dto.UserDetailsDto;
 import dev.trifonov.user_service.dto.UserPreviewDto;
-import dev.trifonov.user_service.entity.User;
+import dev.trifonov.user_service.entity.MarketplaceUser;
 import dev.trifonov.user_service.mapper.AbstractMapper;
 import dev.trifonov.user_service.repository.UserRepository;
 import dev.trifonov.user_service.service.api.UserService;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
-    private final AbstractMapper<User, UserDetailsDto, UserPreviewDto> mapper;
+    private final AbstractMapper<MarketplaceUser, UserDetailsDto, UserPreviewDto> mapper;
 
     @Override
     public UserDetailsDto getUserById(long userId) {
@@ -25,17 +25,17 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDetailsDto createUser(UserDetailsDto dto) {
-        User userToSave = mapper.convertToEntity(dto);
-        User savedUser = userRepository.save(userToSave);
-        return mapper.convertToDetailsDto(savedUser);
+        MarketplaceUser marketplaceUserToSave = mapper.convertToEntity(dto);
+        MarketplaceUser savedMarketplaceUser = userRepository.save(marketplaceUserToSave);
+        return mapper.convertToDetailsDto(savedMarketplaceUser);
     }
 
     @Override
     public UserDetailsDto updateUser(long userId, UserDetailsDto dto) {
-        User userToSave = mapper.convertToEntity(dto);
-        userToSave.setId(userId);
-        User updatedUser = userRepository.save(userToSave);
-        return mapper.convertToDetailsDto(updatedUser);
+        MarketplaceUser marketplaceUserToSave = mapper.convertToEntity(dto);
+        marketplaceUserToSave.setId(userId);
+        MarketplaceUser updatedMarketplaceUser = userRepository.save(marketplaceUserToSave);
+        return mapper.convertToDetailsDto(updatedMarketplaceUser);
     }
 
     @Override

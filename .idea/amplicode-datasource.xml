@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AmplicodeJpaDataSourceConfig">
+    <data-sources>
+      <data-source id="91f9e300-a510-4921-870f-88a95e007923" name="marketplace-user-db" url="jdbc:postgresql://localhost:5432/marketplace-user-db" driverClass="org.postgresql.Driver" />
+    </data-sources>
+  </component>
+</project>

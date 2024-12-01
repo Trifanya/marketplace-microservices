@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 
-@FeignClient(value = "user-service", url = "${feign-client.uri.user-service}")
+@FeignClient(value = "user-service"/*, url = "${feign.user-service.uri}"*/)
 public interface UserFeignClient {
 
     @GetMapping("{userId}")

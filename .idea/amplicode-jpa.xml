@@ -3,5 +3,7 @@
   <component name="AmplicodeJpaIdeaProjectConfig">
     <option name="defaultUnitInitialized" value="true" />
     <option name="renamerInitialized" value="true" />
+    <option name="sourceModelValue" value="Default" />
+    <option name="targetDbValue" value="91f9e300-a510-4921-870f-88a95e007923" />
   </component>
 </project>

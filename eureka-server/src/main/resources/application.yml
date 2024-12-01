@@ -2,7 +2,23 @@ server:
   port: 8761
 spring:
   application:
-    name: marketplace-eureka-server # id приложения - желательно указывать всегда в микросервисных приложениях
+    name: eureka-server # id приложения - желательно указывать всегда в микросервисных приложениях
+  security:
+    oauth2:
+      client:
+        provider:
+          keycloak:
+            user-name-attribute: preferred_username
+            issuer-uri: http://localhost:8080/realms/marketplace
+        registration:
+          keycloak:
+            client-id: eureka-server
+            client-secret: GyotAud4IRF7ueNdFTQft3b30Drcidfa
+            scope:
+              - openid
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/marketplace
 eureka:
   instance:
     hostname: localhost

@@ -31,7 +31,8 @@ public class ProductControllerImpl implements ProductController {
     }
 
     @Override
-    public List<ProductPreviewDto> getProductsByIds(List<Long> productIds) {
+    public List<ProductPreviewDto> getProductsByIds(@RequestHeader Map<String, String> headers, List<Long> productIds) {
+        log.info("Headers: {}", headers);
         log.info("Принят запрос на получение списка товаров. productIds: {}", productIds);
         return productService.getProducts(productIds);
     }

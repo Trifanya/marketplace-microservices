@@ -48,7 +48,7 @@ public class CartProductServiceImpl implements CartProductService {
     public List<ProductInCartDto> getUserCartProducts(long userId) {
         Map<Long, Integer> productIdsAndAmounts = userProductRepository.findAllByUserId(userId).stream()
                 .collect(Collectors.toMap(CartProduct::getProductId, CartProduct::getProductQuantity));
-        List<ProductPreviewDto> productPreviews = catalogFeignClient.getProductsByIds(productIdsAndAmounts.keySet());
+        List<ProductPreviewDto> productPreviews = catalogFeignClient.getProductsByIds(productIdsAndAmounts.keySet().stream().toList());
         return productPreviews.stream()
                 .map(prod -> new ProductInCartDto()
                         .setProductPreviewDto(prod)

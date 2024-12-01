@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-@FeignClient(value = "account-service", url = "${feign-client.uri.account-service}")
+@FeignClient(value = "account-service", url = "${marketplace.feign-client.account-service.uri}")
 public interface CartFeignClient {
 
     @PostMapping("/{userId}/cart/{productId}")
