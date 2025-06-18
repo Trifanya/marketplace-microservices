@@ -38,32 +38,6 @@ spring:
             order-service: dev.trifonov.order_service.kafka.message
             review-service: dev.trifonov.review_service.kafka.message
             user-service: dev.trifonov.user_service.kafka.message
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: http://localhost:8080/realms/marketplace
-      client:
-        provider: # поставщик oauth - место, где мы авторизуемся
-          keycloak:
-            issuer-uri: http://localhost:8080/realms/marketplace
-            #user-name-attribute: preferred_username
-        registration:
-          keycloak:
-            client-id: account-service
-            client-secret: AZ7vtxxOTdwebHfBy1S0kUnkeB0FSYYt
-            scope:
-              - openid
-              - get_catalog
-              - edit_catalog
-              - microprofile-jwt
-          discovery:
-            provider: keycloak
-            client-id: account-service
-            client-secret: AZ7vtxxOTdwebHfBy1S0kUnkeB0FSYYt
-            authorization-grant-type: client_credentials
-            scope:
-              - discovery
   cloud:
     openfeign:
       oauth2:
