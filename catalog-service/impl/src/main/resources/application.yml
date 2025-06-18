@@ -10,28 +10,6 @@ spring:
     name: catalog-service # id приложения - желательно указывать всегда в микросервисных приложениях
     gateway-host: http://localhost:8765
     add-to-cart-url: /account-service/account/{userId}/cart/{productId}
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: http://localhost:8080/realms/marketplace # тот, кто выдает jwt
-      client:
-        provider:
-          keycloak:
-            issuer-uri: http://localhost:8080/realms/marketplace
-        registration:
-#          keycloak:
-#            client-id: catalog-service
-#            client-sercret: rYV6GRUFZ1ihZXV7lGUIg0GZWSP2WhEt
-#            scope:
-#              - openid
-          discovery:
-            provider: keycloak
-            client-id: catalog-service
-            client-secret: rYV6GRUFZ1ihZXV7lGUIg0GZWSP2WhEt
-            authorization-grant-type: client_credentials
-            scope:
-              - discovery
   redis:
     host: localhost
     port: 6379
